@@ -1,0 +1,30 @@
+title: "Upload artefacts to s3"
+summary: Upload artefacts to s3
+description: |-
+  Upload all artefacts produced by the build to s3
+website: https://github.com/
+source_code_url: https://github.com/
+support_url: https://github.com//issues
+host_os_tags:
+  - osx-10.10
+project_type_tags:
+  - ios
+  - android
+type_tags:
+  - script
+is_requires_admin_user: true
+is_always_run: false
+is_skippable: false
+deps:
+  brew:
+  - name: node
+run_if: ""
+inputs:
+  - REQUEST:
+    opts:
+      title: "Build request"
+      is_required: true
+  - PROJECT_PATH:
+    opts:
+      title: "Path to the project"
+      is_required: true
