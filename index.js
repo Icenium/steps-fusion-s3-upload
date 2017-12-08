@@ -1,5 +1,6 @@
 "use strict";
 
+const path = require("path");
 const { argv } = require("yargs");
 const Utils = require("./lib/utils");
 const AwsS3 = require("./lib/aws-s3");
@@ -12,7 +13,7 @@ const projectPath = argv._[1];
 const awsS3 = new AwsS3(request.storageConfiguration);
 const utils = new Utils();
 const uploadService = request.args.platform.toLowerCase() === "android" ?
-    new AndroidUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName, request.args.buildConfiguration) :
+    new AndroidUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName, request.args.buildConfiguration, path) :
     new IosUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName);
 
 uploadService.upload()
