@@ -13,8 +13,8 @@ const projectPath = argv._[1];
 const awsS3 = new AwsS3(request.storageConfiguration);
 const utils = new Utils();
 const uploadService = request.args.platform.toLowerCase() === "android" ?
-    new AndroidUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName, request.args.buildConfiguration, path) :
-    new IosUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName);
+	new AndroidUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName, request.args.buildConfiguration, path) :
+	new IosUploadService(utils, awsS3, projectPath, request.resultsUri, request.args.templateAppName);
 
 uploadService.upload()
-.then((files) => utils.writeOutput(files, request.resultFilePath));
+	.then((files) => utils.writeOutput(files, request.resultFilePath));
